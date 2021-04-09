@@ -1,0 +1,37 @@
+<html>
+	<body>
+		<h2>Register</h2>
+		<div>
+		<form action = 'http://localhost:5000/register' method='post'>
+			<p>Name</p>
+			<input type= 'text' name='name' placeholder = 'Enter your name'>
+			<p>Username</p>
+			<input type= 'text' name='username' placeholder = 'Eg: 18ee040'> 
+			<p>Department</p>
+			<select name="department">
+				{% for dept in department %}
+				<option name="{{dept}}">{{dept}}</option>
+				{% endfor %}
+			</select>	
+			<p>Email</p>
+			<input type= 'email' name='email' placeholder = 'Eg: yuvaraj.a2018eee@sece.ac.in'> 
+			<p>Password</p>
+			<input type= 'password' name='password' placeholder = 'Enter your password'> 
+			<p>Confirm Password</p>
+			<input type= 'password' name='confirm_password' placeholder = 'Re-type your password'><br><br>
+			<input type = 'submit' value = 'Register'>
+			
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul >
+						{% for  message in messages %}
+							<li >{{ message[2:-2] }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+			<p>Have an account? <a href='http://localhost:5000/login'>click to login</a></p>
+		</form>
+		</div>
+	</body>
+</html>
